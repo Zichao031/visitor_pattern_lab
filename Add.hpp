@@ -32,6 +32,16 @@ public:
 	    return right;
 	}
     }
+	virtual void accept(Visitor* visitor, int index) {
+                if (index == 0) {
+			visitor->visit_add_begin(this->get_child(index));
+		} else if (index == 1) {
+			visitor->visit_add_middle(this->get_child(index));	
+		} else {
+			visitor->visit_add_end(this->get_child(index));
+		}
+        }
+
 private:
     Base* left;
     Base* right;

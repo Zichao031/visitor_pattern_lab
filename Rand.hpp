@@ -15,7 +15,9 @@ public:
     	virtual std::string stringify() { return std::to_string(val); }
 	virtual int number_of_children() { return 0; }
         virtual Base*  get_child(int i) { return nullptr }
-
+	virtual void accept(Visitor* visitor, int index) {
+                visitor->visit_rand(this);
+        }
 };
 
 #endif //__RAND_HPP__
