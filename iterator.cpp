@@ -1,6 +1,7 @@
 #include "iterator.hpp"
 
 #include <iostream>
+#include <vector>
         
 Iterator::Iterator(Base* ptr)
 {
