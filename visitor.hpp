@@ -1,6 +1,7 @@
 #ifndef __VISITOR_HPP__
 #define __VISITOR_HPP__
 
+
 class Op;
 class Rand;
 class Add;
@@ -38,4 +39,21 @@ class Visitor{
         virtual void visit_pow_end(Pow* node) = 0;
 };
 
+class AddVisitor: public Visitor {
+public:
+    void visit_add_begin(Add* node) {
+            node->getchild(0);
+    }
+    void visit_add_middle(Add* node) {
+            node->getchild(1);
+    }
+    void visit_add_end(Add* node) {
+            node->getchild(2);
+    }
+};
+void Add::accept(AddVisitor &v) {
+        v.visit_add_begin(this);
+        v.visit_add_middle(this);
+        v.visit_add_end(this);
+}
 #endif //__VISITOR_HPP__
